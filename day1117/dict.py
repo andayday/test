@@ -15,8 +15,11 @@ coursedict[5]='Bash'
 coursedict[6]='Python'
 print(coursedict)
 del coursedict[1]
-for key,value in coursedict.items():
-	print(key, value);
-coursedict.pop(2)
-print(coursedict)
+#for key,value in coursedict.items():
+#	print(key, value);
+for value in coursedict.values():
+	print("--------")
+	print(value);
+#coursedict.pop(2)
+#print(coursedict)
 
