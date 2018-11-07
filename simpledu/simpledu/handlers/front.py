@@ -6,7 +6,5 @@ front = Blueprint('front', __name__)
 
 @front.route('/')
 def index():
-    userinfo = User.query.filter_by(username = "admin")
-    print("userinfo : ", userinfo)
     courses = Course.query.all()
     return render_template('index.html', courses = courses)
