@@ -5,7 +5,7 @@ user = Blueprint('user', __name__, url_prefix = '/users')
 
 @user.route('/<username>')
 def index(username):
-    userinfo = User.query.filter_by(username = username).first()
+    userinfo = User.query.filter_by(username = username).first_or_404()
     return render_template('user.html', userinfo = userinfo)
 
 
