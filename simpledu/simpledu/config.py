@@ -11,7 +11,7 @@ class DevelopmentConfig(BaseConfig):
     开发环境配置
     """
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root@localhost:3306/simpledu?charset=utf-8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root@localhost:3306/simpledu?charset=utf8'
 
 
 class ProductionConfig(BaseConfig):
