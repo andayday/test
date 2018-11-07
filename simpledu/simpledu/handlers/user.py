@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from simledu.models import User
+from simpledu.models import User
 
 user = Blueprint('user', __name__, url_prefix = '/users')
 
