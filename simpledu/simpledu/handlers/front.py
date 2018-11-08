@@ -1,4 +1,4 @@
-from flask import flash
+from flask import flash, redirect
 from flask import Blueprint, render_template
 from simpledu.models import Course
 from simpledu.models import User
