@@ -38,7 +38,8 @@ class User(Base):
 
     @password.setter
     def password(self, ori_password):
-        return self._password 
+        
+        self._password = ori_password
         #self._password = generate_password_hash(ori_password)
 
     def check_password(self, password):
