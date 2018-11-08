@@ -4,11 +4,11 @@ from wtforms.validators import Length, Email, EqualTo, Required
 from simpledu.models import db, User
 
 class RegisterForm(FlaskForm):
-    username = StringField('用户名', validators = [Required(), Length(3, 24)])
-    email = StringField('邮箱', validators = [Required(), Email()])
-    password = PasswordField('密码', validators = [Required(), Length(6, 24)])
-    repeat_password = PasswordField('重复密码', validators = [Required(), EqualTo('password')])
-    submit = SubmitField('提交')
+    username = StringField('Username', validators = [Required(), Length(3, 24)])
+    email = StringField('Email', validators = [Required(), Email()])
+    password = PasswordField('Password', validators = [Required(), Length(6, 24)])
+    repeat_password = PasswordField('Password again', validators = [Required(), EqualTo('password')])
+    submit = SubmitField('Submit')
 
     def create_user(self):
         user = User()
@@ -21,8 +21,8 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('邮箱', validators = [Required(), Email()])
-    password = PasswordField('密码', validators = [Required(), Length(6, 24)])
-    remember_me = BooleanField('记住我')
-    submit = SubmitField('提交')
+    email = StringField('Email', validators = [Required(), Email()])
+    password = PasswordField('Password', validators = [Required(), Length(6, 24)])
+    remember_me = BooleanField('Remember me')
+    submit = SubmitField('Submit')
 
