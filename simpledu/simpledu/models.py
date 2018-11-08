@@ -23,7 +23,7 @@ class User(Base):
     username = db.Column(db.String(32), unique = True, index = True, nullable = False)
     email = db.Column(db.String(64), unique = True, index = True, nullable = False)
     #明确列名为password
-    _password = db.Column('password', db.String(128), nullable = False)
+    _password = db.Column('password', db.String(512), nullable = False)
     role = db.Column(db.SmallInteger, default = ROLE_USER)
     job = db.Column(db.String(64))
     publish_courses = db.relationship('Course')

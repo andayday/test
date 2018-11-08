@@ -6,7 +6,7 @@ from simpledu.models import db, User
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators = [Required(), Length(3, 24)])
     email = StringField('Email', validators = [Required(), Email()])
-    password = PasswordField('Password', validators = [Required(), Length(6, 128)])
+    password = PasswordField('Password', validators = [Required(), Length(6, 512)])
     repeat_password = PasswordField('Password again', validators = [Required(), EqualTo('password')])
     submit = SubmitField('Submit')
 
