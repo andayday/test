@@ -25,7 +25,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('you have logout', success)
+    flash('you have logout', 'success')
     return redirect(urf_for('.index'))
 
 @front.route('/register', methods = ['GET', 'POST'])
