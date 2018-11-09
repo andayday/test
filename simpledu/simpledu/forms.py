@@ -44,12 +44,12 @@ class LoginForm(FlaskForm):
 
     def validate_username(self, field):
         if not field.data.isalnum():
-            return ValidationError("用户名必须使用字母或者数字")
+            raise ValidationError('Username Not Exist or Password Error')
         if field.data and not User.query.filter_by(username = field.data).first():
             raise ValidationError("Username Not Exist")
     
     def validate_password(self, field):
-        user = User.query.filter_by(email = self.email.data).first()
+        user = User.query.filter_by(username = self.username.data).first()
         if user and not user.check_password(field.data):
             raise ValidationError('Password Error')
 
