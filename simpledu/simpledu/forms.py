@@ -20,6 +20,8 @@ class RegisterForm(FlaskForm):
         return user
 
     def validate_username(self, field):
+        if not field.data.isalnum():
+            return ValidationError("用户名必须使用字母或者数字")
         if User.query.filter_by(username = field.data).first():
             raise ValidationError('username already exist')
 
@@ -30,7 +32,8 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators = [Required(), Email()])
+    #email = StringField('Email', validators = [Required(), Email()])
+    username = StringField('Username', validators = [Required(), Length(3, 24)])
     password = PasswordField('Password', validators = [Required(), Length(6, 24)])
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Submit')
@@ -39,6 +42,12 @@ class LoginForm(FlaskForm):
         if field.data and not User.query.filter_by(email = field.data).first():
             raise ValidationError("Email not register")
 
+    def validate_username(self, field):
+        if not field.data.isalnum():
+            return ValidationError("用户名必须使用字母或者数字")
+        if field.data and not User.query.filter_by(username = field.data).first():
+            raise ValidationError("Username Not Exist")
+    
     def validate_password(self, field):
         user = User.query.filter_by(email = self.email.data).first()
         if user and not user.check_password(field.data):
