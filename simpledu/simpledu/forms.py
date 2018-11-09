@@ -21,7 +21,7 @@ class RegisterForm(FlaskForm):
 
     def validate_username(self, field):
         if not field.data.isalnum():
-            return ValidationError('username format error')
+            raise ValidationError('username format error')
         if User.query.filter_by(username = field.data).first():
             raise ValidationError('username already exist')
 
