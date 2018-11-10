@@ -75,7 +75,7 @@ class Course(Base):
 
     @property
     def url(self):
-        return urf_for('course.detail', course_id = self.id)
+        return url_for('course.detail', course_id = self.id)
 
 
 class Chapter(Base):
