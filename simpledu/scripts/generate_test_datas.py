@@ -8,7 +8,7 @@ fake = Faker
 
 def iter_users():
     yield User(
-            username = 'Jack Lee',
+            username = 'JackLee',
             email = 'jacklee@example.com',
             password = 'zxcvbnm',
             job = 'development engineer',
@@ -16,7 +16,7 @@ def iter_users():
 
 
 def iter_courses():
-    author = User.query.filter_by(username = 'Jack Lee').first()
+    author = User.query.filter_by(username = 'JackLee').first()
     with open(os.path.join(os.path.dirname(__file__), '..', 'datas', 'courses.json')) as f:
         courses = json.load(f)
         for course in courses:
