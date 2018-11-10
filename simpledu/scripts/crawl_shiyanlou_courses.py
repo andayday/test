@@ -3,7 +3,7 @@ import scrapy
 class CourseSpider(scrapy.Spider):
     name = 'course'
 
-    start_urls = ['https://www.shiyanlou.com/boot/camp']
+    start_urls = ['https://www.shiyanlou.com/bootcamp']
 
 
     def parse(self, response):
