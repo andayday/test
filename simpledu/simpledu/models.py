@@ -81,7 +81,7 @@ class Chapter(Base):
     name = db.Column(db.String(128), unique = True, index = True)
     description = db.Column(db.String(256))
     vedio_url = db.Column(db.String(256))
-    vidio_duration = db.Column(db.String(24))
+    vedio_duration = db.Column(db.String(24))
     course_id = db.Column(db.Integer, db.ForeignKey('course.id', ondelete = "CASCADE"))
     course = db.relationship('Course', uselist = False)
 
