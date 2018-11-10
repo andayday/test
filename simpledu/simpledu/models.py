@@ -72,6 +72,10 @@ class Course(Base):
     def __repr__(self):
         return '<Course: {}>'.format(self.name)
 
+    @property
+    def url(self):
+        return urf_for('course.detail', course_id = self.id)
+
 
 class Chapter(Base):
     __tablename__ = 'chapter'
