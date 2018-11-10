@@ -4,7 +4,7 @@ from random import randint
 from faker import Faker
 from simpledu.models import db, User, Course, Chapter
 
-fake = Faker
+fake = Faker()
 
 def iter_users():
     yield User(
