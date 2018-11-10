@@ -7,7 +7,7 @@ class CourseSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        for course in response.css('div.bootcamp-course-item'):
+        for course in response.css('div.bootcamp-courses-item'):
             print(course)
             yield {
                     'name': course.xpath('.//div[@class="course-title"]/a/span/text()').extract_first().strip(),
