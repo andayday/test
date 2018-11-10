@@ -7,6 +7,7 @@
 a,
 a:hover,
 a:visited {
+	cursor: pointer;
 	text-decoration: none !important;
 }
 
@@ -20,3 +21,6 @@ a:visited {
 	height: 160px !important;
 }
 
+.nav-pagination {
+  text-align: center;
+}
