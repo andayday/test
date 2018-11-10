@@ -11,7 +11,7 @@ def iter_users():
             username = 'Jack Lee',
             email = 'jacklee@example.com',
             password = 'zxcvbnm',
-            job = '研发工程师',
+            job = 'development engineer',
             )
 
 
