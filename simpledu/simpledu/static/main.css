@@ -1,13 +1,6 @@
-
-.form {
-	width: 400px;
-	margin: 0 auto;
-}
-
 a,
 a:hover,
 a:visited {
-	cursor: pointer;
 	text-decoration: none !important;
 }
 
@@ -21,6 +14,9 @@ a:visited {
 	height: 160px !important;
 }
 
-.nav-pagination {
-  text-align: center;
+
+.form {
+	width: 400px;
+	margin: 0 auto;
 }
+
