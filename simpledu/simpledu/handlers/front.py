@@ -14,7 +14,7 @@ def index():
     pagination = Course.query.paginate(
             page = page,
             per_page = current_app.config['INDEX_PER_PAGE'],
-            err_out = False,
+            error_out = False,
             )
     return render_template('index.html', pagination = pagination)
 
