@@ -1,4 +1,4 @@
-from flask import flash, redirect, url_for
+from flask import flash, redirect, url_for, request, current_app
 from flask import Blueprint, render_template
 from simpledu.models import Course
 from simpledu.models import User
@@ -9,8 +9,14 @@ front = Blueprint('front', __name__)
 
 @front.route('/')
 def index():
-    courses = Course.query.all()
-    return render_template('index.html', courses = courses)
+
+    page = request.args.get('page', default = 1, type = int)
+    pagination = Course.query.paginate(
+            page = page,
+            per_page = current_app.config['INDEX_PER_PAGE'],
+            err_out = False,
+            )
+    return render_template('index.html', pagination = pagination)
 
 @front.route('/login', methods = ['GET', 'POST'])
 def login():
