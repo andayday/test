@@ -94,5 +94,5 @@ class Chapter(Base):
 
     @property
     def url(self):
-        return url_for('cource.chapter', course_id = self.course.id, chapter_id = self.id)
+        return url_for('course.chapter', course_id = self.course.id, chapter_id = self.id)
 
