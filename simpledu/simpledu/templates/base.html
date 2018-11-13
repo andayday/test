@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>{% block title %}{% endblock %}</title>
+		{% block head_css %}
 		<link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="static/main.css">
 		<!-- link rel='stylesheet' href="{{ url_for('static', filename='main.css') }}" -->
+		{% endblock %}
 	</head>
 
 	<body>
@@ -59,8 +61,9 @@
 			{% block body %}{% endblock %}
 			{% block footer %}{% endblock %}
 		</div>
-
+		{% block tail_js %}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		{% endblock %}
 	</body>
 </html>
