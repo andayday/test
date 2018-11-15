@@ -11,11 +11,12 @@ def index():
 
 
 @admin.route('/users')
+@admin_required
 def users():
     page = request.args.get('page', default = 1, type = int)
     pagination = User.query.paginate(
             page = page,
-            per_page = current_app.config['ADMIN_PER_PAGE'],
+            per_page=current_app.config['ADMIN_PER_PAGE'],
             error_out = False,
             )
     return render_template('admin/users.html', pagination = pagination)
