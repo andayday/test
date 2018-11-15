@@ -9,7 +9,6 @@ front = Blueprint('front', __name__)
 
 @front.route('/')
 def index():
-
     page = request.args.get('page', default = 1, type = int)
     pagination = Course.query.paginate(
             page = page,
