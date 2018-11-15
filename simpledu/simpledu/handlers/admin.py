@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from simpledu.decorators import admin_required
 
 admin = Blueprint('admin', __name__, url_prefix = '/admin')
