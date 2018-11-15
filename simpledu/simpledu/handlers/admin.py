@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, current_app
 from simpledu.decorators import admin_required
 from simpledu.models import User
 
