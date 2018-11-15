@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from simpledu.decorators import admin_required
+from simpledu.models import User
 
 admin = Blueprint('admin', __name__, url_prefix = '/admin')
 
