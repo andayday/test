@@ -20,5 +20,22 @@ def users():
             error_out = False,
             )
     return render_template('admin/users.html', pagination = pagination)
-    
+   
+@admin.route('/users/create', methods = ['GET', 'POST'])
+@admin_required
+def create_user():
+    pass
+
+
+@admin.route('/users/<int:user_id>/edit', methods = ['GET', 'POST'])
+@admin_required
+def edit_user(user_id):
+    pass
+
+
+@admin.route('/users/<int:user_id>/delete', methods = ['GET', 'POST'])
+@admin_required
+def delete_user(user_id):
+    pass
+
 
