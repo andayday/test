@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, url_for, flash, redirect
 from simpledu.decorators import admin_required
 from simpledu.models import User
 
@@ -24,7 +24,12 @@ def users():
 @admin.route('/users/create', methods = ['GET', 'POST'])
 @admin_required
 def create_user():
-    pass
+    form = RegisterForm()
+    if form.validate_on_submit():
+        form.create_user()
+        flash('create success', 'success')
+        return redirect(url_for('admin.users'))
+    return render_template('admin/create_user.html', form = form)
 
 
 @admin.route('/users/<int:user_id>/edit', methods = ['GET', 'POST'])
