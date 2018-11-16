@@ -57,7 +57,11 @@ def edit_course(course_id):
 @admin.route('/courses/<int:course_id>/delete', methods = ['GET', 'POST'])
 @admin_required
 def delete_course(course_id):
-    pass
+    course = Course.query.get_or_404(course_id))
+    db.session.delete(course)
+    db.session.commit()
+    flash('course have delete', 'success')
+    return redirect(url_for('admin.course'))
 
 
 
