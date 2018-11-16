@@ -61,7 +61,7 @@ def delete_course(course_id):
     db.session.delete(course)
     db.session.commit()
     flash('course have delete', 'success')
-    return redirect(url_for('admin.course'))
+    return redirect(url_for('admin.courses'))
 
 
 
