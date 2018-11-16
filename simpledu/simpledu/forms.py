@@ -53,3 +53,33 @@ class LoginForm(FlaskForm):
         if user and not user.check_password(field.data):
             raise ValidationError('Password Error')
 
+class CourseForm(FlaskForm):
+    name = StringField('coursename', validators = [Required(), Length(5, 32)])
+    description = TextAreaField('coursedescription', validators = [Required(), Length(5, 32)])
+
+    image_url = StringField('image_url', validators = [Required(), URL()])
+    author_id = IntegerField('author id', validators = [Required(), NumberRange(min, message='valid id')])
+
+    submit = SubmitField('submit')
+
+    def validate_author_id(self, field):
+        if not User.query.get(self.author_id.data):
+            raise ValidationError('user is not exist')
+
+    def create_course(self):
+        course = Course()
+        self.populate_obj(course)
+        db.session.add(course)
+        db.session.commit()
+        return course
+
+    def update_course(self, course):
+        self.populate_obj(course)
+        db.session.add(course)
+        db.session.commit()
+        return course
+
+        
+
+
+

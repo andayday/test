@@ -25,14 +25,32 @@ def courses():
 @admin.route('/courses/create', methods = ['GET', 'POST'])
 @admin_required
 def create_course():
-    pass
-
+    form = CourseForm()
+    if form.validate_on_submit():
+        form.create_course()
+        flash('create success', 'success')
+        return redirect(url_for('admin.course'))
+    return render_template('admin/create_course.html', form = form)
 
 
 @admin.route('/courses/<int:course_id>/edit', methods = ['GET', 'POST'])
 @admin_required
 def edit_course(course_id):
-    pass
+    course = Course.query.get_or_404(course_id)
+    form = CourseForm(obj = course)
+    if form.is_submitted():
+        form.populate_obj(course)
+        db.session.add(course)
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            flash('coursealready exist', 'error')
+        else:
+            flash('update success', 'success')
+            return redirect(url_for('admin.courses'))
+
+    return render_template('admin/edit_course.html', form = form, course = course)
 
 
 
