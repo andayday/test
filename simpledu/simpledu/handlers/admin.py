@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, current_app, url_for, flash, redirect
 from simpledu.decorators import admin_required
-from simpledu.models import User, db
+from simpledu.models import User, db, Course
 from simpledu.forms import RegisterForm
 
 admin = Blueprint('admin', __name__, url_prefix = '/admin')
@@ -9,6 +9,38 @@ admin = Blueprint('admin', __name__, url_prefix = '/admin')
 @admin_required
 def index():
     return render_template('admin/index.html')
+
+@admin.route('/courses')
+@admin_required
+def courses():
+    page = request.args.get('page', default = 1, type = int)
+    pagination = Course.query.paginate(
+            page = page,
+            per_page = current_app.config['INDEX_PER_PAGE'],
+            error_out = False,
+            )
+    return render_template('admin/courses.html', pagination = pagination)
+
+
+@admin.route('/courses/create', methods = ['GET', 'POST'])
+@admin_required
+def create_course():
+    pass
+
+
+
+@admin.route('/courses/<int:course_id>/edit', methods = ['GET', 'POST'])
+@admin_required
+def edit_user(course_id):
+    pass
+
+
+
+@admin.route('/courses/<int:course_id>/delete', methods = ['GET', 'POST'])
+@admin_required
+def delete_user(course_id):
+    pass
+
 
 
 @admin.route('/users')
@@ -56,6 +88,13 @@ def edit_user(user_id):
 @admin.route('/users/<int:user_id>/delete', methods = ['GET', 'POST'])
 @admin_required
 def delete_user(user_id):
-    pass
+    if current_user.id == user_id:
+        flash('user do not delete self', 'error')
+        return redirect(url_for('admin.users'))
 
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    flash('user have delete', 'success')
+    return redirect(url_for('admin.users'))
 
