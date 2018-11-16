@@ -31,14 +31,14 @@ def create_course():
 
 @admin.route('/courses/<int:course_id>/edit', methods = ['GET', 'POST'])
 @admin_required
-def edit_user(course_id):
+def edit_course(course_id):
     pass
 
 
 
 @admin.route('/courses/<int:course_id>/delete', methods = ['GET', 'POST'])
 @admin_required
-def delete_user(course_id):
+def delete_course(course_id):
     pass
 
 
