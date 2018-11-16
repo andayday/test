@@ -58,7 +58,7 @@ class CourseForm(FlaskForm):
     description = TextAreaField('coursedescription', validators = [Required(), Length(5, 32)])
 
     image_url = StringField('image_url', validators = [Required(), URL()])
-    author_id = IntegerField('author id', validators = [Required(), NumberRange(min, message='valid id')])
+    author_id = IntegerField('author id', validators = [Required(), NumberRange(min = 1, message='valid id')])
 
     submit = SubmitField('submit')
 
