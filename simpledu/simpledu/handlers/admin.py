@@ -36,7 +36,21 @@ def create_user():
 @admin.route('/users/<int:user_id>/edit', methods = ['GET', 'POST'])
 @admin_required
 def edit_user(user_id):
-    pass
+    user = User.query.get_or_404(user_id)
+    form = RegisterForm(obj = user)
+    if form.is_submitted():
+        form.populate_obj(user)
+        db.session.add(user)
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            flash('user or email already exist', 'error')
+        else:
+            flash('update success', 'success')
+            return redirect(url_for('admin.users'))
+
+    return render_template('admin/edit_user.html', form = form, user = user)
 
 
 @admin.route('/users/<int:user_id>/delete', methods = ['GET', 'POST'])
