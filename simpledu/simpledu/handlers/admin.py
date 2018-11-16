@@ -29,7 +29,7 @@ def create_course():
     if form.validate_on_submit():
         form.create_course()
         flash('create success', 'success')
-        return redirect(url_for('admin.course'))
+        return redirect(url_for('admin.courses'))
     return render_template('admin/create_course.html', form = form)
 
 
