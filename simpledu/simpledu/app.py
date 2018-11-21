@@ -5,11 +5,12 @@ from simpledu.models import db, User
 from flask_login import LoginManager
 
 def register_blueprints(app):
-    from .handlers import front, course, admin, user
+    from .handlers import front, course, admin, user, live
     app.register_blueprint(front)
     app.register_blueprint(course)
     app.register_blueprint(admin)
     app.register_blueprint(user)
+    app.register_blueprint(live)
 
 def register_extensions(app):
     db.init_app(app)
