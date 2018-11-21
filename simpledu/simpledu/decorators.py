@@ -7,9 +7,7 @@ def role_required(role):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            print("test 111111111111")
             if not current_user.is_authenticated or current_user.role < role:
-                print("test 222222222")
                 abort(404)
             return func(*args, **kwargs)
         return wrapper

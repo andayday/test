@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, TextAreaField, IntegerField
 from wtforms.validators import Length, Email, EqualTo, Required, URL, NumberRange
-from simpledu.models import db, User, Course
+from simpledu.models import db, User, Course, Live
 
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators = [Required(), Length(3, 24)])
@@ -28,7 +28,6 @@ class RegisterForm(FlaskForm):
     def validate_email(self, field):
         if User.query.filter_by(email = field.data).first():
             raise ValidationError('Email already exist')
-
 
 
 class LoginForm(FlaskForm):
@@ -80,6 +79,19 @@ class CourseForm(FlaskForm):
         return course
 
         
+class LiveForm(FlaskForm):
+    name = StringField('coursename', validators = [Required(), Length(5, 32)])
+    author_id = IntegerField('author id', validators = [Required(), NumberRange(min = 1, message='valid id')])
+    submit = SubmitField('submit')
+
+    def validate_author_id(self, field):
+        if not User.query.get(self.author_id.data):
+            raise ValidationError('user is not exist')
 
 
-
+    def create_live(self):
+        live = Live()
+        self.populate_obj(live)
+        db.session.add(live)
+        db.session.commit()
+        return live

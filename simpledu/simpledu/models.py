@@ -78,6 +78,17 @@ class Course(Base):
         return url_for('course.detail', course_id = self.id)
 
 
+class Live(Base):
+    __tablename__ = 'live'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(128), unique = True, index = True, nullable = False)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = 'CASCADE'))
+    author = db.relationship('User', uselist = False)
+
+    def __repr__(self):
+        return '<Course: {}>'.format(self.name)
+
+
 class Chapter(Base):
     __tablename__ = 'chapter'
     
