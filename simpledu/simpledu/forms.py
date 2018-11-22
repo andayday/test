@@ -80,7 +80,7 @@ class CourseForm(FlaskForm):
 
         
 class LiveForm(FlaskForm):
-    name = StringField('coursename', validators = [Required(), Length(5, 32)])
+    name = StringField('livename', validators = [Required(), Length(5, 32)])
     author_id = IntegerField('author id', validators = [Required(), NumberRange(min = 1, message='valid id')])
     submit = SubmitField('submit')
 
