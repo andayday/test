@@ -8,9 +8,9 @@ fake = Faker()
 
 def iter_users():
     yield User(
-            username = 'JackLee',
+            username = 'antian',
             email = 'jacklee@example.com',
-            password = 'zxcvbnm',
+            password = 'antian123',
             job = 'development engineer',
             )
 
