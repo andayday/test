@@ -14,7 +14,7 @@ class Chatroom(object):
         self.pubsub.subscribe('char')
 
     def register(self, client):
-        self.clents.append(client)
+        self.clients.append(client)
 
     def send(self, client, data):
         try:
