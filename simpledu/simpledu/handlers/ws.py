@@ -23,6 +23,7 @@ class Chatroom(object):
             self.clients.remove(client)
 
     def run(self):
+        print("this is run")
         for message in self.pubsub.listen():
             print("run ", message)
             if message['type'] == 'message':
@@ -32,6 +33,7 @@ class Chatroom(object):
                     gevent.spawn(self.send, client, data)
 
     def start(self):
+        print("this is start")
         gevent.spawn(self.run)
 
 
@@ -45,6 +47,7 @@ def inbox(ws):
 
         print(message)
         if message:
+            print("this is inbox")
             redis.publish('chat', message)
 
 @ws.route('/recv')
