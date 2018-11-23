@@ -1,6 +1,7 @@
 from flask import Blueprint
 import redis
 import gevent
+import json
 
 ws = Blueprint('ws', __name__, url_prefix = '/ws')
 
@@ -23,17 +24,13 @@ class Chatroom(object):
             self.clients.remove(client)
 
     def run(self):
-        print("this is run")
         for message in self.pubsub.listen():
-            print("run ", message)
             if message['type'] == 'message':
                 data = message.get('data')
                 for client in self.clients:
-                    print("data ", data)
                     gevent.spawn(self.send, client, data)
 
     def start(self):
-        print("this is start")
         gevent.spawn(self.run)
 
 
@@ -47,13 +44,13 @@ def inbox(ws):
 
         print(message)
         if message:
-            print("this is inbox")
             redis.publish('chat', message)
 
 @ws.route('/recv')
 def outbox(ws):
-    print("/recv")
     chat.register(ws)
+    redis.publish('chat', json.dumps(dict(username = "New user come in, people count:", 
+                                text = len(chat.clients))))
     while not ws.closed:
         gevent.sleep(0.1)
 
