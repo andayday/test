@@ -11,7 +11,7 @@ class Chatroom(object):
     def __init__(self):
         self.clients = []
         self.pubsub = redis.pubsub()
-        self.pubsub.subscribe('char')
+        self.pubsub.subscribe('chat')
 
     def register(self, client):
         self.clients.append(client)
