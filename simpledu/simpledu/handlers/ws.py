@@ -24,6 +24,7 @@ class Chatroom(object):
 
     def run(self):
         for message in self.pubsub.listen():
+            print("run ", message)
             if message['type'] == 'message':
                 data = message.get('data')
                 for client in self.clients:
