@@ -55,6 +55,7 @@
 	var inbox = new WebSocket('ws://'+ location.host + "/ws/recv");
 	var outbox = new WebSocket('ws://'+ location.host + "/ws/send");
 	$("#message-form button").on("click", function(event) {
+		console.log("antian test")
 		text = $('#message-form input').val();
 		username = $('#username').text();
 		outbox.send(JSON.stringify({ username: username, text: text}))
