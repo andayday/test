@@ -27,6 +27,7 @@ class Chatroom(object):
             if message['type'] == 'message':
                 data = message.get('data')
                 for client in self.clients:
+                    print("data ", data)
                     gevent.spawn(self.send, client, data)
 
     def start(self):
@@ -47,6 +48,7 @@ def inbox(ws):
 
 @ws.route('/recv')
 def outbox(ws):
+    print("/recv")
     chat.register(ws)
     while not ws.closed:
         gevent.sleep(0.1)
