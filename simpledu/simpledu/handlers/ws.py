@@ -41,6 +41,7 @@ def inbox(ws):
     while not ws.closed:
         message = ws.receive()
 
+        print(message)
         if message:
             redis.publish('chat', message)
 

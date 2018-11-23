@@ -58,6 +58,8 @@
 		console.log("antian test")
 		text = $('#message-form input').val();
 		username = $('#username').text();
+		console.log(text)
+		console.log(username)
 		outbox.send(JSON.stringify({ username: username, text: text}))
 		$('#message-form input').val('');
 	});
