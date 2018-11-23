@@ -33,7 +33,7 @@ class Chatroom(object):
         gevent.spawn(self.run)
 
 
-char = Chatroom()
+chat = Chatroom()
 chat.start()
 
 @ws.route('/send')
