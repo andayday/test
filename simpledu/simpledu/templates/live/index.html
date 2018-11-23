@@ -59,7 +59,7 @@
 		username = $('#username').text();
 		outbox.send(JSON.stringify({ username: username, text: text}))
 		$('#message-form input').val('');
-	)};
+	});
 
 	inbox.onmessage = function(message) {
 		console.log(message);
