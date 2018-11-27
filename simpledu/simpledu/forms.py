@@ -95,3 +95,9 @@ class LiveForm(FlaskForm):
         db.session.add(live)
         db.session.commit()
         return live
+
+
+class MessageForm(FlaskForm):
+    text = StringField('系统消息', validators = [Required(), Length(1, 32)])
+    submit = SubmitField('submit')
+
