@@ -145,11 +145,10 @@ def create_live():
     return render_template('admin/create_live.html', form = form)
 
 
-@admin.route('/message')
+@admin.route('/message', methods = ['GET', 'POST'])
 @admin_required
 def send_message():
     form = MessageForm()
-    print("send_message")
     if form.validate_on_submit():
         redis.publish('chat', json.dumps(dict(
                 username = 'System',
