@@ -148,6 +148,7 @@ def create_live():
 @admin.route('/message', methods = ['GET', 'POST'])
 @admin_required
 def send_message():
+    print("this is send_message")
     form = MessageForm()
     if form.validate_on_submit():
         redis.publish('chat', json.dumps(dict(
