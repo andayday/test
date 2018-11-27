@@ -3,6 +3,7 @@ from simpledu.decorators import admin_required
 from simpledu.models import User, db, Course, Live
 from simpledu.forms import RegisterForm, CourseForm, LiveForm, MessageForm
 from .ws import redis
+import json
 
 admin = Blueprint('admin', __name__, url_prefix = '/admin')
 
