@@ -65,7 +65,7 @@ class Resume(Base):
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', userlist = False)
+    user = db.relationship('User', uselist = False)
     job_experiences = db.relationship('JobExperience')
     edu_experiences = db.relationship('EduExperience')
     project_experiences = db.relationship('ProjectExperience')
