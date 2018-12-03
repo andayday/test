@@ -18,7 +18,7 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    from .handles import blueprints
+    from .handlers import blueprints
     for bp in blueprints:
         app.register_blueprint(bp)
 
