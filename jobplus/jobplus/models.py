@@ -123,7 +123,7 @@ class Company(Base):
     stack = db.Column(db.String(128))
     team_introduction = db.Column(db.String(256))
     welfares = db.Column(db.String(256))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = 'SETNULL'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = 'SET NULL'))
     user = db.relationship('User', uselist = False, backref = db.backref('company', uselist = False))
 
 
