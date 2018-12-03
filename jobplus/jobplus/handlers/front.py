@@ -1,8 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 front = Blueprint('front', __name__, url_prefix = '/')
 
 @front.route('/')
 def index():
-    pass
+    return render_template('base.html')
 
