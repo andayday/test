@@ -124,7 +124,7 @@ class Company(Base):
     team_introduction = db.Column(db.String(256))
     welfares = db.Column(db.String(256))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = 'SETNULL'))
-    user = db.relationship('User', uselist = False, backreg = db.backreg('company', uselist = False))
+    user = db.relationship('User', uselist = False, backref = db.backref('company', uselist = False))
 
 
     def __repr__(self):
