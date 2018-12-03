@@ -46,19 +46,19 @@ class User(Base):
         self._password = generate_password_hash(orig_password)
    
     def check_password(self, pwd):
-       return check_password_hash(self._password, pwd)
+        return check_password_hash(self._password, pwd)
     
-   @property
-   def is_admin(self):
-       return self.role == ROLE_ADMIN
+    @property
+    def is_admin(self):
+        return self.role == ROLE_ADMIN
 
-   @property
-   def is_company(self):
-       return self.role == ROLE_COMPANY
+    @property
+    def is_company(self):
+        return self.role == ROLE_COMPANY
 
-   @property
-   def is_user(self):
-       return self.role == ROLE_USER
+    @property
+    def is_user(self):
+        return self.role == ROLE_USER
 
 class Resume(Base):
     __tablename__ = 'resume'
