@@ -45,7 +45,7 @@ class User(Base):
     def password(self, orig_password):
         self._password = generate_password_hash(orig_password)
    
-   def check_password(self, pwd):
+    def check_password(self, pwd):
        return check_password_hash(self._password, pwd)
     
    @property
