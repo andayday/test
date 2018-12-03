@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
-from jobplus.models import db
+from jobplus.models import db, User
 from jobplus.config import configs
 from flask_login import LoginManager
 
