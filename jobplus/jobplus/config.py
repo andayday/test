@@ -1,6 +1,6 @@
 class BaseConfig(object):
     SECRET_KEY = 'this is a test'
-    #SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
