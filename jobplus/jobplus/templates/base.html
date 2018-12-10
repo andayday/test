@@ -2,10 +2,34 @@
 <html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width"/>
 		<title>{% block  title %}jobplus{% endblock %}</title>
+		{% block head_css %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		{% endblock %}
 	</head>
 	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Jobplus</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">职位<span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="/">公司<span class="sr-only">(current)</span></a></li>
+						{% if current_user.is_authenticated and current_user.is_admin %}
+						<li><a href="{{ url_for('admin.index') }}">控制台</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
 		{% block body %}{% endblock %}
 	</body>
 </html>
