@@ -28,7 +28,7 @@
 						{% endif %}
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						{% if not current_user.is_authenticated %}
+						{% if current_user.is_authenticated %}
 							<li><a href="#">用户注册</a></li>
 							<li><a href="#">公司注册</a></li>
 							<li><a href="#">登录</a></li>
