@@ -1,0 +1,40 @@
+{% extends "admin/index.html" %}
+{% from "macros.html" import render_pagination %}
+
+{% block title %}
+Admin - live
+{% endblock %}
+
+{% block operation %}
+<a href="{{ url_for('admin.create_live') }}" type="button" class="btn btn-primary">
+	<span class="glyphicon glyphicone-plus" ara-hidden="true"></span>
+	添加直播
+</a>
+{% endblock %}
+
+{% block admin %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>名称</th>
+				<th>作者</th>
+			</tr>
+			<tbody>
+				{% for live in pagination.items %}
+					<tr>
+						<td>{{ live.id }}</td>
+						<td>{{ live.name }}</td>
+						<td>{{ live.author.username }}</td>
+						<td>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</thead>
+	</table>
+	{{ render_pagination(pagination, 'admin.lives')}}
+{% endblock %}
+
+
+
