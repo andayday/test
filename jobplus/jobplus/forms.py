@@ -16,7 +16,7 @@ class LoginForm(FlaskForm):
             raise ValidationError("Username Not Exist")
 
     def validate_password(self, field):
-        user = User.query.filter_by(username = self.username.data).first()
+        user = User.query.filter_by(username = self.email.data).first()
         if user and not user.check_password(field.data):
             raise ValidationError('Password Error')
 
