@@ -13,16 +13,16 @@ def index():
 @front.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-	if form.validate_on_submit():
-		user = User.query.filter_by(email = form.email.data).first()
-		login_user(user, form.remember_me.data)
-		next = 'user.profile'
-		if user.is_admin:
-			next = 'admin.index'	
-		else user.is_company:
-			next = 'company.profile'
-		return redirect(url_for(next))
-	return render_template('login.html', form = form)
+    if form.validate_on_submit():
+            user = User.query.filter_by(email = form.email.data).first()
+            login_user(user, form.remember_me.data)
+            next = 'user.profile'
+            if user.is_admin:
+                    next = 'admin.index'	
+            else user.is_company:
+                    next = 'company.profile'
+            return redirect(url_for(next))
+    return render_template('login.html', form = form)
 
 @front.route('/userregister', methods = ['GET', 'POST'])
 def userregister():
