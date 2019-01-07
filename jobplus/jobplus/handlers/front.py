@@ -19,7 +19,7 @@ def login():
             next = 'user.profile'
             if user.is_admin:
                     next = 'admin.index'	
-            else user.is_company:
+            elif user.is_company:
                     next = 'company.profile'
             return redirect(url_for(next))
     return render_template('login.html', form = form)
