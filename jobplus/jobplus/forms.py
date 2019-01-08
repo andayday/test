@@ -42,7 +42,7 @@ class RegisterForm(FlaskForm):
                         email = self.email.data,
                         password = self.password.data)
             db.session.add(user)
-            db.session.cimmit()
+            db.session.commit()
             return user
 
 
