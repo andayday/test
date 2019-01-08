@@ -2,9 +2,9 @@ from flask_wtf import FlaskForm
 from  wtforms import StringField, PasswordField, BooleanField, ValidationError, SubmitField
 
 class LoginForm(FlaskForm):
-	email = StringField('Email', validators = [Required(), Email()])
+    email = StringField('Email', validators = [Required(), Email()])
 #username = StringField('Username', validators = [Required(), Length(3, 24)])
-    password = PasswordField('Password', validators = [Rquired(), Length(6,24)])
+    password = PasswordField('Password', validators = [Required(), Length(6,24)])
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Submit')
 
