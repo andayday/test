@@ -26,6 +26,7 @@ def login():
 
 @front.route('/userregister', methods = ['GET', 'POST'])
 def userregister():
+    print('11111111\r\n')
     form = RegisterForm()
     if form.validate_on_submit():
         form.create_user()
