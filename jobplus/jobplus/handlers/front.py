@@ -34,6 +34,7 @@ def userregister():
     return render_template('userregister.html', form = form)
 
 @front.route('/companyregister', methods = ['GET', 'POST'])
+def companyregister():
     form = RegisterForm()
     form.name.label = u'company label'
     if form.validate_on_submit():
