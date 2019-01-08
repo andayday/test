@@ -30,19 +30,19 @@ class RegisterForm(FlaskForm):
 	submit = SubmitField('Submit')
 
 	def validate_username(self, field):
-		if User.query.filter_by(name = field.data).first():
-			raise ValidationError('name exist')
+            if User.query.filter_by(name = field.data).first():
+                    raise ValidationError('name exist')
 
 	def validate_email(self, field):
-		if User.query.filter_by(email = field.data).first():
-			raise ValidationError('email have exist')
+            if User.query.filter_by(email = field.data).first():
+                    raise ValidationError('email have exist')
 	
 	def create_user(self):
-		user = User(name = self.name.data,
-				    email = self.email.data,
-				    password = self.password.data)
-		db.session.add(user)
-		db.session.cimmit()
-		return user
+            user = User(username = self.name.data,
+                        email = self.email.data,
+                        password = self.password.data)
+            db.session.add(user)
+            db.session.cimmit()
+            return user
 
 
