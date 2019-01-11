@@ -50,15 +50,15 @@ class User(Base, UserMixin):
     
     @property
     def is_admin(self):
-        return self.role == ROLE_ADMIN
+        return self.role == self.ROLE_ADMIN
 
     @property
     def is_company(self):
-        return self.role == ROLE_COMPANY
+        return self.role == self.ROLE_COMPANY
 
     @property
     def is_user(self):
-        return self.role == ROLE_USER
+        return self.role == self.ROLE_USER
 
 class Resume(Base):
     __tablename__ = 'resume'
