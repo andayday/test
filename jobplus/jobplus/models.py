@@ -26,7 +26,7 @@ class User(Base, UserMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(32), unique = True, index = True, nullable = False) 
-    real_name = db.Column(dn.String(20))
+    real_name = db.Column(db.String(20))
     email = db.Column(db.String(64), unique = True, index = True, nullable = False)
     _password = db.Column('password', db.String(256), nullable = False)
     role = db.Column(db.SmallInteger, default = ROLE_USER)
