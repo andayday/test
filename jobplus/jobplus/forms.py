@@ -65,7 +65,7 @@ class UserProfileForm(FlaskForm):
         if self.password.data:
             user.password = self.password.data
         user.phone = self.phone.data
-        user.work_years = self.work_years.data
+        user.work_years = self.workyears.data
         user.resume_url = self.resume_url.data
         db.session.add(user)
         db.session.commit()
