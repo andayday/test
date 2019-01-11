@@ -1,4 +1,5 @@
 #!/bin/bash
+# readme usage: source env.sh
 export FLASK_APP=manage.py
 export FLASK_DEBUG=True
 
