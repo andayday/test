@@ -155,6 +155,30 @@ class Job(Base):
         return '<Job {}>'.format(self.name)
 
 
+class CompanyDetail(Base):
+    __tablename__ = 'company_detail'
+
+
+    id = db.Column(db.Integer, primary_key = True)
+    slug = db.Column(db.String(24), nullable = False, index = True, unique = True)
+    logo = db.Column(db.String(64), nullable = False)
+    site = db.Column(db.String(64), nullable = False)
+    location = db.Column(db.String(24), nullable = False)
+
+    description = db.Column(db.String(100))
+    about = db.Column(db.String(1024))
+    tags = db.Column(db.String(128))
+    stack = db.Column(db.String(128))
+
+    team_instroduction = db.Column(db.String(256))
+    welfares = db.Column(db.String(256))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = 'SET NULL'))
+    user = db.relationship('User', uselist = False, backreg = db.backreg('company_detail', uselist = False))
+
+    def __repr__(self):
+        return '<CompanyDetail {}>'.format(self.id)
+
+
 
 
 
