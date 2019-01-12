@@ -7,6 +7,7 @@ company = Blueprint('company', __name__, url_prefix = '/company')
 @company.route('/profile', methods = ['GET', 'POST'])
 @login_required
 def profile():
+    print('1111111111111')
     form = CompanyProfileForm()
     if form.validate_on_submit():
         form.updated_profile(current_user)
