@@ -4,7 +4,7 @@ from jobplus.forms import CompanyProfileForm
 
 company = Blueprint('company', __name__, url_prefix = '/company')
 
-@user.route('/profile', methods = ['GET', 'POST'])
+@company.route('/profile', methods = ['GET', 'POST'])
 @login_required
 def profile():
     form = CompanyProfileForm()
