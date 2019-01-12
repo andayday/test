@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, url_for, render_template
-from flask_login import login_required
+from flask_login import login_required, current_user
 from jobplus.forms import CompanyProfileForm
 
 company = Blueprint('company', __name__, url_prefix = '/company')
@@ -7,7 +7,6 @@ company = Blueprint('company', __name__, url_prefix = '/company')
 @company.route('/profile', methods = ['GET', 'POST'])
 @login_required
 def profile():
-    print('1111111111111')
     form = CompanyProfileForm()
     if form.validate_on_submit():
         form.updated_profile(current_user)
