@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from  wtforms import StringField, PasswordField, BooleanField, ValidationError, SubmitField, IntegerField
+from  wtforms import StringField, PasswordField, BooleanField, ValidationError, SubmitField, IntegerField, TextAreaField
 from wtforms.validators import Length, Email, EqualTo, Required
 from jobplus.models import User, db
 
