@@ -36,6 +36,8 @@ class User(Base, UserMixin):
     work_years = db.Column(db.SmallInteger)
     phone = db.Column(db.String(11))
 
+    detail = db.relationship('CompanyDetail', uselist = False)
+
     def __repr__(self):
         return '<User:{}>'.format(self.username)
 
