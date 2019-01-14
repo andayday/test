@@ -62,6 +62,7 @@ class CompanyProfileForm(FlaskForm):
         if phone[:2] not in ('13', '15', '18') and len(phone) != 11:
             raise ValidationError('请输入有效的手机号')
     def updated_profile(self, user):
+        #if not User.query.filter_by(username = self.name.data).first():
         user.username = self.name.data
         user.email = self.email.data
         if self.password.data:
